@@ -1,0 +1,4 @@
+{
+  "commandInfo": "[commands.commandinfo.base.usage, commandinfo.initial.info]",
+  "info": "[commands.commandinfo.getinfoid.usage, commandinfo.info.info]"
+}

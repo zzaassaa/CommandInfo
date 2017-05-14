@@ -1,0 +1,10 @@
+#Configs
+commandinfo=Command_Info Options
+commandinfo.initial_permission.label=Permission level -commandInfo-
+commandinfo.initial_permission.comment=The permission level, aka the gamemode, for allowing the player to use the command, commandInfo
+commandinfo.info_permission.label=Permission level -info-
+commandinfo.info_permissoin.comment=The permission level, aka the gamemode, for allowing the player to use the subcommand, info
+
+commands.commandinfo.base.usage=/commandInfo
+commands.commandinfo.getinfo.usage=/
+test=testworked

@@ -1,0 +1,17 @@
+package com.draganz.commandinfo.api;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import net.minecraft.command.ICommand;
+
+public class SimpleCommandInfoMapping implements ICommandInfoMapping{
+
+	private final Map<ICommand, IStringPacket> COMMAND_INFO = new HashMap();
+	private final String MOD_ID;
+	
+	public SimpleCommandInfoMapping(String mod_id){
+		MOD_ID = mod_id;
+	}
+	
+}

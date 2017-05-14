@@ -1,0 +1,45 @@
+package com.draganz.commandinfo.api;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import net.minecraft.command.ICommand;
+
+/**
+ * This is used for data storage and access within the API; there is a little bit of repetition of usage, but this is to
+ * help guarantee that the API will not have to go through any changes, as there are back ups; thus, yes I know, so don't 
+ * complain
+ * 
+ * It is recommended to the user to register their own mod_if, as when this is registered  to the mapping, a unique key 
+ * is required, and chances are, their mod_id is the best bet
+ * 
+ * @author draganz
+ *
+ */
+public interface ICommandInfoMapping {
+
+	/**
+	 * This method is used to put keys and values toward a stored map
+	 * 
+	 * @param cmd
+	 * @param packet
+	 */
+	public void registerCommandInfo(ICommand cmd, IStringPacket packet);
+	
+	/**
+	 * Getter method
+	 * 
+	 * @return 
+	 */
+	public Map<ICommand, IStringPacket> getCommandInfo();
+	
+	/**
+	 * getter method, used only for utility/easy of life purposes, no serious use as of yet, though should still be considered,
+	 * as the easiest way to register the ICommandInfoMapping toward the API involves usage of this, so don't be a dunderhead 
+	 * and have this return ""
+	 * 
+	 * @return
+	 */
+	public String getAssociatedModID();
+	
+}

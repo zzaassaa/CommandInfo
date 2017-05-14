@@ -1,0 +1,23 @@
+package com.draganz.commandinfo;
+
+public final class Library {
+
+	public static final class Config{
+		public static int cmdInitialPermission;
+		public static final String CMD_INITIAL_NAME = "cmd_initial_permission";
+		public static final String CMD_INITIAL_LABEL = "command.commandinfo.initial_permission.label";
+		public static final String CMD_INITIAL_COMMENT = "command.commandinfo.initial_permission.comment";
+		public static final int CMD_INITIAL_DEFAULT = 0;
+		public static final int CMD_INITIAL_MIN = 0;
+		public static final int CMD_INITIAL_MAX = 3;
+		
+		public static int cmdInfoPermission;
+		public static final String CMD_INFO_NAME = "cmd_info_permission";
+		public static final String CMD_INFO_LABEL = "command.commandinfo.info_permission.label";
+		public static final String CMD_INFO_COMMENT = "command.commandinfo.info_permission.comment";
+		public static final int CMD_INFO_DEFAULT = 0;
+		public static final int CMD_INFO_MIN = 0;
+		public static final int CMD_INFO_MAX = 3;
+	}
+	
+}

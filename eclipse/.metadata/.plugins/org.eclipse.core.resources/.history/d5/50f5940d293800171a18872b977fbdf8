@@ -1,0 +1,15 @@
+package com.draganz.commandinfo.api;
+
+import net.minecraft.command.CommandBase;
+
+public interface ICmdBlock {
+
+	public CommandBase getCommand();
+	
+	/**
+	 * 
+	 * @return String formated
+	 */
+	public String getComment();
+	
+}

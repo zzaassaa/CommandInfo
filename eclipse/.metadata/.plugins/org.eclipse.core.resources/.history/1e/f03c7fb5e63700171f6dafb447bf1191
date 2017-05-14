@@ -1,0 +1,5 @@
+package com.draganz.commandinfo.proxy;
+
+public class ClientProxy {
+
+}

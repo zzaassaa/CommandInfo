@@ -1,0 +1,5 @@
+package com.draganz.commandinfo.api;
+
+public interface ICmdInfo {
+
+}

@@ -1,0 +1,12 @@
+package com.draganz.commandinfo.library;
+
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+
+public interface IProxy {
+
+	public void onServerStarting(FMLServerStartingEvent event);
+	
+	public void preInit(FMLPreInitializationEvent event);
+	
+}

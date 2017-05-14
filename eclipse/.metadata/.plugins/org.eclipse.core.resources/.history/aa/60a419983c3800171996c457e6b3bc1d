@@ -1,0 +1,28 @@
+package com.draganz.commandinfo.api;
+
+import net.minecraft.command.ICommandSender;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.text.TextComponentTranslation;
+
+public class SimpleStringPacket implements IStringPacket{
+
+	private final String MESSAGE;
+	
+	public SimpleStringPacket( final String formatedMessage ){
+		MESSAGE = formatedMessage;
+	}
+	
+	public final String getMessage(){
+		return MESSAGE;
+	}
+	
+	@Override
+	public void doChatMessage(IStringPacket calledPacket, MinecraftServer server, ICommandSender sender,
+			String[] args) {
+		sender.sendMessage(component);
+		sender.sendMessage(new TextComponentTranslation(MESSAGE));
+		sender
+		//sender.sendMessage(new TextComponentTranslation(out.getValue(), args[1]));
+	}
+	
+}

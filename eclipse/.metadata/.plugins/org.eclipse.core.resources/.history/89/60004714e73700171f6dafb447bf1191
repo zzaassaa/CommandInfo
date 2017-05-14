@@ -1,0 +1,5 @@
+package com.draganz.commandinfo.library;
+
+public interface IProxy {
+
+}
