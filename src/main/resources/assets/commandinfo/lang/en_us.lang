@@ -1,0 +1,79 @@
+#Configs
+commandinfo=Command_Info Options
+commandinfo.initial_permission.label=Permission level for the commandinfo command
+commandinfo.initial_permission.comment=The permission level, aka the gamemode, for allowing the player to use the command, commandInfo
+commandinfo.info_permission.label=Permission level for the info command
+commandinfo.info_permission.comment=The permission level, aka the gamemode, for allowing the player to use the subcommand, info
+
+#Commands
+commands.commandinfo.base.usage=TODO
+commands.commandinfo.getinfo.usage=TODO
+commands.commandinfo.getinfoid.usage=TODO
+commands.commandinfo.getinfoarg.usage=TODO
+
+#Command Info - commandinfo
+commandinfo.initial.info=
+commandinfo.info.info=
+
+#Command Info - minecraft
+commandinfo.time.info=
+commandinfo.gamemode.info=
+commandinfo.difficulty.info=
+commandinfo.defaultgamemode.info=
+commandinfo.kill.info=
+commandinfo.toggledownfall.info=
+commandinfo.weather.info=
+commandinfo.xp.info=
+commandinfo.teleport.info=
+commandinfo.give.info=
+commandinfo.replaceitem.info=
+commandinfo.stats.info=
+commandinfo.effect.info=
+commandinfo.enchant.info=
+commandinfo.particle.info=
+commandinfo.emote.info=
+commandinfo.showseed.info=
+commandinfo.help.info=
+commandinfo.debug.info=
+commandinfo.message.info=
+commandinfo.broadcast.info=
+commandinfo.setspawnspoint.info=
+commandinfo.setdefaultspawnpoint.info=
+commandinfo.gamerule.info=
+commandinfo.clearinventory.info=
+commandinfo.testfor.info=
+commandinfo.spreadplayers.info=
+commandinfo.playsound.info=
+commandinfo.scoreboard.info=
+commandinfo.executeat.info=
+commandinfo.trigger.info=
+commandinfo.achievement.info=Hello World!!
+commandinfo.summon.info=
+commandinfo.setblock.info=
+commandinfo.fill.info=
+commandinfo.clone.info=
+commandinfo.compare.info=
+commandinfo.blockdata.info=
+commandinfo.testforblock.info=
+commandinfo.messsageraw.info=
+commandinfo.worldborder.info=
+commandinfo.title.info=
+commandinfo.entitydata.info=
+commandinfo.stopsound.info=
+commandinfo.locate.info=
+commandinfo.op.info=
+commandinfo.deop.info=
+commandinfo.stop.info=
+commandinfo.saveall.info=
+commandinfo.saveon.info=
+commandinfo.saveoff.info=
+commandinfo.banip.info=
+commandinfo.pardonip.info=
+commandinfo.banplayer.info=
+commandinfo.listbans.info=
+commandinfo.pardonplayer.info=
+commandinfo.serverkick.info=
+commandinfo.listplayers.info=
+commandinfo.whitelist.info=
+commandinfo.setplayertimeout.info=
+commandinfo.publishlocalserver.info=

@@ -1,0 +1,37 @@
+package com.draganz.commandinfo;
+
+import com.draganz.commandinfo.commands.CmdInfo;
+import com.draganz.commandinfo.commands.CmdInitial;
+import com.draganz.commandinfo.handler.ConfigHandler;
+import com.draganz.commandinfo.initialization.InitCommands;
+
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+
+
+@Mod(modid = CommandInfo.MOD_ID, 
+	 name = "@MOD_NAME@", 
+	 version = "@MOD_VERSION@",
+	 guiFactory = CommandInfo.GUI_FACTORY)
+public class CommandInfo {
+	
+	public static final String MOD_ID = "commandinfo";
+	public static final String GUI_FACTORY = "com.draganz.commandinfo.client.gui.GuiFactory";
+	
+	@Mod.Instance(CommandInfo.MOD_ID)
+	public static CommandInfo instance;
+	
+	@Mod.EventHandler
+	public void onServerStarting(FMLServerStartingEvent event){
+		event.registerServerCommand(new CmdInitial());
+		event.registerServerCommand(new CmdInfo());
+	}
+	
+	@Mod.EventHandler
+	public void preInit(FMLPreInitializationEvent event){
+		ConfigHandler.init(event.getSuggestedConfigurationFile());
+		InitCommands.init();
+	}
+	
+}

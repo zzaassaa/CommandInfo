@@ -1,0 +1,19 @@
+package com.draganz.commandinfo.api;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.command.CommandBase;
+
+public final class CommandInfoAPI {
+
+	private static final List<ICmdBlock> BLOCKS = new ArrayList();
+	
+	public static final boolean registerCommand( final ICmdBlock in ){
+		return BLOCKS.add(in);
+	}
+	public static final boolean registerCommand( final CommandBase commandBase, final String commandName, final Object comment ){
+		return registerCommand(new CmdBlock(commandBase, commandName, comment));
+	}
+	
+}

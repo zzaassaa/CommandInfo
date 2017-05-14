@@ -1,0 +1,22 @@
+package com.draganz.commandinfo.api;
+
+import java.util.Map.Entry;
+
+import net.minecraft.command.ICommand;
+import net.minecraft.command.ICommandSender;
+import net.minecraft.server.MinecraftServer;
+
+/**
+ * 
+ * @author draganz
+ * 
+ * This interface is used in the central commands to 
+ *
+ */
+public interface IStringPacket {
+
+	public void getComment();
+	
+	public void doChatMessage(Entry<ICommand,IStringPacket> packet, MinecraftServer server, ICommandSender sender, String[] args);
+	
+}

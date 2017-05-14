@@ -1,0 +1,13 @@
+package com.draganz.commandinfo.api;
+
+import net.minecraft.command.ICommand;
+
+public interface ICmdInfo {
+
+	public ICommand command;
+	
+	public String commandName;
+	
+	 
+	
+}

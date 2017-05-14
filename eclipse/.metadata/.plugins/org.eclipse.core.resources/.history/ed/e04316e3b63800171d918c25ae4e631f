@@ -1,0 +1,108 @@
+package com.draganz.commandinfo.handler;
+
+import java.io.File;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import com.draganz.commandinfo.api.CommandInfoAPI;
+import com.draganz.commandinfo.api.ICommandInfoMapping;
+import com.draganz.commandinfo.api.IStringPacket;
+import com.draganz.commandinfo.api.SimpleCommandInfoMapping;
+import com.draganz.commandinfo.streamio.FileIO;
+
+import net.minecraft.command.ICommand;
+
+public class InfoFileHandler {
+
+	public static File infoDirectory;
+	
+	private static final Map<String, File> FILES = new LinkedHashMap();
+	
+	public static void preInit(File file){
+		infoDirectory = new File(file.getParentFile(), "information");
+		infoDirectory.mkdirs();
+	}
+	
+	public static void postInit(){
+		
+		for(Entry<String, ICommandInfoMapping> map : CommandInfoAPI.getCommandInfo().entrySet()){
+			FILES.put( map.getKey(), new File(infoDirectory, constructFileName(map.getKey())) );
+		}
+		
+	}
+	
+	public static void loadMapsIO(Map<String, ICommandInfoMapping> core){
+		
+		for(String id : core.keySet()){
+			File file = FILES.get(id);
+			
+			if(file.exists()){
+				SimpleCommandInfoMapping out = new SimpleCommandInfoMapping(id);
+				Map<String, String> data = FileIO.readMapFromFile(file);
+				
+				for(ICommand e : core.get(id).getCommandInfo().keySet()){
+					for(Entry<String, String> e2 : data.entrySet()){
+						if(e.getName().equals(e2.getKey())){
+							out.registerCommandInfo( e, convertToArray(e2.getValue()) );
+						}
+					}
+				}
+			}else{
+				FileIO.writeMapToFile( convertMapping(core.get(id).getCommandInfo()), file);
+			}
+		}
+		
+	}
+	
+	private static String constructFileName(String id){
+		return id.concat("_info.json");
+	}
+	
+	private static Map<String, String> convertMapping(Map<ICommand, IStringPacket> in){
+		Map<String, String> output = new LinkedHashMap();
+		
+		for(Entry<ICommand, IStringPacket> out : in.entrySet()){
+			output.put( out.getKey().getName(), Arrays.toString(out.getValue().getComments()) );
+		}
+		
+		return output;
+	}
+	
+	private static String[] convertToArray(String in){
+		return Arrays.stream(in.substring(1, in.length() - 1).split(",")).map(String::trim).toArray(String[]::new);
+	}
+	
+	/*
+	
+	public static ICommandInfoMapping loadMapToInfoFile(ICommandInfoMapping mapping) throws FileNotFoundException{
+		if(mc_info.exists()){
+			SimpleCommandInfoMapping out = new SimpleCommandInfoMapping("minecraft");
+			Map<String, String> data = FileIO.readMapFromFile(mc_info);
+			
+			for(ICommand e : mapping.getCommandInfo().keySet()){
+				for(Entry<String, String> e2 : data.entrySet()){
+					if(e.getName().equals(e2.getKey())){
+						out.registerCommandInfo( e, convert(e2.getValue()) );
+					}
+				}
+			}
+			
+			return out;
+		}else{
+			FileIO.writeMapToFile( convertMapping(mapping.getCommandInfo()) , mc_info);
+			return mapping;
+		}
+	}
+	
+	
+	@SubscribeEvent
+	public void onConfigChangeEvent(ConfigChangedEvent.OnConfigChangedEvent event){
+		if(event.getModID().equalsIgnoreCase(CommandInfo.MOD_ID)){
+			loadConfig();
+		}
+	}
+	 */
+	
+}

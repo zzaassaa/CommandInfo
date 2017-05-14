@@ -1,0 +1,14 @@
+package com.draganz.commandinfo.api;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public final class CommandInfoAPI {
+
+	private static final List<ICmdBlock> BLOCKS = new ArrayList();
+	
+	public static final boolean registerCommand(ICmdBlock in){
+		return BLOCKS.add(in);
+	}
+	
+}

@@ -1,0 +1,45 @@
+package com.draganz.commandinfo.api;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import net.minecraft.command.CommandBase;
+
+public final class CommandInfoAPI {
+
+	private static final List<ICmdBlock> COMMAND_BLOCKS = new ArrayList();
+	private static final List<CommandBase> COMMANDS = new ArrayList();
+	private static final List<String> COMMAND_METHODS = new ArrayList();
+	
+	public static final boolean registerCommandBlock( final ICmdBlock in ){
+		return COMMAND_BLOCKS.add(in);
+	}
+	public static final boolean registerCommandBlock( final CommandBase commandBase, final String comment ){
+		return registerCommandBlock(new CmdBlock(commandBase, comment));
+	}
+	
+	public static final boolean registerCoreCommand( final CommandBase cmd ){
+		return COMMANDS.add(cmd);
+	}
+	public static final boolean registerCoreCommand( final CommandBase cmd, final String method){
+		return registerCoreCommand(cmd) ? registerCoreCommandMethod(method) : false;
+	}
+	
+	public static final boolean registerCoreCommandMethod( final String cmdMethod ){
+		return COMMAND_METHODS.add(cmdMethod);
+	}
+	
+	public static final Collection<ICmdBlock> getCommandBlocks(){
+		return COMMAND_BLOCKS;
+	}
+	
+	public static final Collection<CommandBase> getCommands(){
+		return COMMANDS;
+	}
+	
+	public static final Collection<String> getCommandMethods(){
+		return COMMAND_METHODS;
+	}
+	
+}

@@ -1,0 +1,25 @@
+package com.draganz.commandinfo.api;
+
+import net.minecraft.command.CommandBase;
+
+public class CmdBlock implements ICmdBlock{
+
+	private final CommandBase CMD_BASE;
+	private final Object COMMENT;
+	
+	public CmdBlock(CommandBase commandBase, Object comment){
+		CMD_BASE = commandBase;
+		COMMENT = comment;
+	}
+	
+	@Override
+	public CommandBase getCommand() {
+		return CMD_BASE;
+	}
+
+	@Override
+	public Object getComment() {
+		return COMMENT;
+	}
+
+}

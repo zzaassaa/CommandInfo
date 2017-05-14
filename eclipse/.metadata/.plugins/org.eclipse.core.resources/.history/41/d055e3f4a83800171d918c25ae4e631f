@@ -1,0 +1,40 @@
+package com.draganz.commandinfo.api;
+
+import net.minecraft.command.ICommandSender;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.text.TextComponentTranslation;
+
+/**
+ * This is a simple packet to hold the message arguments that can be used standardly; the chat message will use localization
+ * where available in the send change message, for simplicity of code
+ * 
+ * @author draganz
+ *
+ */
+public class SimpleStringPacket implements IStringPacket{
+
+	private final String[] MESSAGES;
+	
+	public SimpleStringPacket( final String... formatedMessage ){
+		MESSAGES = formatedMessage;
+	}
+	
+	public final String[] getMessage(){
+		return MESSAGES;
+	}
+	
+	/**
+	 * When using this default provided method, due to usage of TextComponentTranslation, the user should make sure to use 
+	 * JSON language translation rather than direct text input
+	 */
+	@Override
+	public void doChatMessage(MinecraftServer server, ICommandSender sender,
+			String[] args) {
+		
+		for( int i = 0; i < MESSAGES.length; i++){
+			sender.sendMessage(new TextComponentTranslation(MESSAGES[i]));
+		}
+		
+	}
+	
+}

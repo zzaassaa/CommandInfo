@@ -1,0 +1,89 @@
+package com.draganz.commandinfo.commands;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import com.draganz.commandinfo.library.LibMisc;
+
+import net.minecraft.command.CommandBase;
+import net.minecraft.command.CommandException;
+import net.minecraft.command.ICommandSender;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.math.BlockPos;
+
+/*
+ * This is all near identical copy and paste from pahimar on github
+ * See https://github.com/pahimar/Equivalent-Exchange
+ */
+public class CommandManager extends CommandBase{
+
+	private static List<CommandBase> commands = new ArrayList();
+	private static List<String> commandCalls = new ArrayList();
+	
+	@Override
+	public String getName() {
+		return LibMisc.INITIAL;
+	}
+	
+	@Override
+	public String getUsage(ICommandSender sender) {
+		return LibMisc.POST_BASE;
+	}
+	
+	@Override
+	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
+		boolean found = false;
+		
+		if(args.length >= 1){
+			for(CommandBase cmd : commands){
+				if(cmd.getName().equalsIgnoreCase(args[0]) && cmd.checkPermission(server, sender)){
+					found = true;
+					cmd.execute(server, sender, args);
+				}
+			}
+		}
+	}
+	
+	@Override
+	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args,
+			BlockPos targetPos) {
+		if(args.length == 1){
+			return getListOfStringsMatchingLastWord(args, commandCalls);
+		}else if(args.length > 1){
+			for(CommandBase cmd : commands){
+				if(cmd.getName().equalsIgnoreCase(args[0])){
+					return cmd.getTabCompletions(server, sender, args, targetPos);
+				}
+			}
+		}
+		
+		return null;
+	}
+	
+	static{
+		commands.add(new /*///*/);
+				
+		commandCalls.addAll(commands.stream().map(ICommand::getName).collect(Collectors.toList()));
+	}
+	
+	/*
+
+    static {
+        modCommands.add(new CommandSetEnergyValue());
+        modCommands.add(new CommandPlayerLearnItem());
+        modCommands.add(new CommandPlayerForgetEverything());
+        modCommands.add(new CommandPlayerForgetItem());
+        modCommands.add(new CommandSetItemLearnable());
+        modCommands.add(new CommandSetItemNotLearnable());
+        modCommands.add(new CommandSetItemRecoverable());
+        modCommands.add(new CommandSetItemNotRecoverable());
+        modCommands.add(new CommandSyncEnergyValues());
+        modCommands.add(new CommandRegenEnergyValues());
+        modCommands.add(new CommandRunTest());
+
+        commands.addAll(modCommands.stream().map(ICommand::getName).collect(Collectors.toList()));
+    }
+}
+	 */
+}

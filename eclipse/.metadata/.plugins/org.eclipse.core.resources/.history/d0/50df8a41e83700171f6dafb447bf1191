@@ -1,0 +1,14 @@
+package com.draganz.commandinfo.proxy;
+
+import com.draganz.commandinfo.library.IProxy;
+
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+
+public abstract class CommonProxy implements IProxy{
+
+	@Override
+	public void onServerStarting(FMLServerStartingEvent event) {
+		event.registerServerCommand(new CommandCI());
+	}
+	
+}
