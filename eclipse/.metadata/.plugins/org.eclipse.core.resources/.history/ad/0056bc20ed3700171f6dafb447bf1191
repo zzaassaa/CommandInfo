@@ -1,7 +1,0 @@
-package com.draganz.commandinfo.library;
-
-public class LibConfig {
-
-	public static int info_threshold;
-	
-}

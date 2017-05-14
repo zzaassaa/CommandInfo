@@ -1,7 +1,0 @@
-package com.draganz.commandinfo.proxy;
-
-import com.draganz.commandinfo.library.IProxy;
-
-public abstract class CommonProxy implements IProxy{
-
-}
