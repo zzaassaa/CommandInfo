@@ -7,18 +7,25 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 
 /**
- * 
- * @author draganz
- * 
  * This interface is used in the central commands to deliver an output a message
  * NOTE: as one should expect, this uses the chat component, thus (obviously) the output should be localized toward the 
  * Language files, and that this is done autonomously by Minecraft (just do something like mod_id.thing.info); unfortunately, I
- * fell this may not be apparent for some
+ * feel this may not be apparent for some
+ * 
+ * @author draganz
  *
  */
 public interface IStringPacket {
 	
 	public String[] getComments();
+	
+	/**
+	 * This method is called for any files using registerCommandInfo in the CommandInfoAPI. Said inputs will be a read from file
+	 * and provided as an array (even if it only reads one input).
+	 * 
+	 * @param comments
+	 */
+	public void setComments(String... comments);
 	
 	/**
 	 * This is called when the command is executed and has found a specific command that matches, and thus calls this method

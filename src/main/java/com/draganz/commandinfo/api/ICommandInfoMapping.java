@@ -10,7 +10,7 @@ import net.minecraft.command.ICommand;
  * help guarantee that the API will not have to go through any changes, as there are back ups; thus, yes I know, so don't 
  * complain
  * 
- * It is recommended to the user to register their own mod_if, as when this is registered  to the mapping, a unique key 
+ * It is recommended to the user to register their own mod_id, as when this is registered to the mapping, a unique key 
  * is required, and chances are, their mod_id is the best bet
  * 
  * @author draganz
@@ -19,7 +19,8 @@ import net.minecraft.command.ICommand;
 public interface ICommandInfoMapping {
 
 	/**
-	 * This method is used to put keys and values toward a stored map
+	 * This method is used to put keys and values toward a stored map. This should permit overwriting of previous values, as
+	 * it is called in the fileIO function
 	 * 
 	 * @param cmd
 	 * @param packet
@@ -34,9 +35,7 @@ public interface ICommandInfoMapping {
 	public Map<ICommand, IStringPacket> getCommandInfo();
 	
 	/**
-	 * getter method, used only for utility/easy of life purposes, no serious use as of yet, though should still be considered,
-	 * as the easiest way to register the ICommandInfoMapping toward the API involves usage of this, so don't be a dunderhead 
-	 * and have this return ""
+	 * getter method, used when registering the mapping, so don't be a dunderhead have this return ""
 	 * 
 	 * @return
 	 */

@@ -18,7 +18,7 @@ import com.google.gson.JsonParseException;
 
 public class FileIO {
 	
-	private static final Type MAP_TYPE = new TypeToken< Map<String, String> >(){}.getType();
+	public static final Type MAP_TYPE = new TypeToken< Map<String, String> >(){}.getType();
 	public static final Gson GSON = new GsonBuilder().setPrettyPrinting().enableComplexMapKeySerialization().create();
 	
 	public static void writeMapToFile(Map<String, String> map, File file){

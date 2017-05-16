@@ -12,3 +12,24 @@
 1494770803740	Delete element
 1494772466854	Delete element
 1494772725556	Delete element
+1494783246333	Delete element
+1494783349827	Delete element
+1494784034738	Delete element
+1494784193670	Delete element
+1494785976252	Delete element
+1494786494041	Delete element
+1494788172601	Delete element
+1494823499494	Delete element
+1494848148502	Delete element
+1494854800013	Rename type 'TextComponent'
+1494876403992	Delete element
+1494881310841	Move compilation unit
+1494881325900	Move compilation unit
+1494886701075	Rename type 'CompressionHandler'
+1494886715841	Rename type 'CompressionUtil'
+1494888602708	Delete element
+1494888606642	Delete element
+1494889655978	Rename field 'PARSED_COMMAND_INFO'
+1494889683625	Rename field 'TMP_CMD_INFO'
+1494889866235	Rename method 'registerCommandInfo'
+1494889971220	Rename method 'registerCoreAllInfo'

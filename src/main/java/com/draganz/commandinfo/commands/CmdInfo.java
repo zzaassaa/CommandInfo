@@ -65,7 +65,7 @@ public class CmdInfo extends CommandBase{
 		if(args.length == 2){//set modid
 			return getListOfStringsMatchingLastWord(args, CommandInfoAPI.getCommandInfo().keySet());
 		}else if(args.length == 3){//set additional args
-			return getListOfStringsMatchingLastWord(args, getMethods(CommandInfoAPI.getCommandInfo(args[1]).keySet()));
+			return getListOfStringsMatchingLastWord(args, getMethods(CommandInfoAPI.getCommandInfoMapping(args[1]).keySet()));
 		}
 		
 		return Collections.<String>emptyList();

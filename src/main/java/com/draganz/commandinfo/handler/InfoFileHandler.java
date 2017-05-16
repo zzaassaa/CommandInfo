@@ -10,27 +10,24 @@ import java.util.Map.Entry;
 import com.draganz.commandinfo.api.CommandInfoAPI;
 import com.draganz.commandinfo.api.ICommandInfoMapping;
 import com.draganz.commandinfo.api.IStringPacket;
-import com.draganz.commandinfo.api.SimpleCommandInfoMapping;
+import com.draganz.commandinfo.network.InfoNetwork;
+import com.draganz.commandinfo.network.MsgSyncInfo;
 import com.draganz.commandinfo.streamio.FileIO;
 
 import net.minecraft.command.ICommand;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class InfoFileHandler {
 
 	public static File infoDirectory;
-	
-	private static final Map<String, File> FILES = new LinkedHashMap();
-	
+		
 	public static void preInit(File file){
 		infoDirectory = new File(file.getParentFile(), "information");
 		infoDirectory.mkdirs();
 	}
 	
 	public static void postInit(){
-		
-		for(Entry<String, ICommandInfoMapping> map : CommandInfoAPI.getTempCommandInfo().entrySet()){
-			FILES.put( map.getKey(), new File(infoDirectory, constructFileName(map.getKey())) );
-		}
 		
 		try {
 			loadMapsIO(CommandInfoAPI.getTempCommandInfo());
@@ -42,28 +39,29 @@ public class InfoFileHandler {
 	
 	public static void loadMapsIO(Map<String, ICommandInfoMapping> core) throws FileNotFoundException{
 		
-		for(String id : core.keySet()){
-			File file = FILES.get(id);
+		for(Entry<String, ICommandInfoMapping> entry : core.entrySet()){
+			File file = new File(infoDirectory, constructFileName(entry.getKey()));
 			
 			if(file.exists()){
-				SimpleCommandInfoMapping out = new SimpleCommandInfoMapping(id);
+				ICommandInfoMapping out = entry.getValue();
 				Map<String, String> data = FileIO.readMapFromFile(file);
 				
-				for(ICommand e : core.get(id).getCommandInfo().keySet()){
-					for(Entry<String, String> e2 : data.entrySet()){
-						if(e.getName().equals(e2.getKey())){
-							out.registerCommandInfo( e, convertToArray(e2.getValue()) );
+				for(ICommand cmd : entry.getValue().getCommandInfo().keySet()){
+					for(Entry<String, String> dataEntry : data.entrySet()){
+						if(cmd.getName().equals(dataEntry.getKey())){
+							
+							out.getCommandInfo().get(cmd).setComments(convertToArray(dataEntry.getValue()));
+														
 						}
 					}
 				}
 				
-				CommandInfoAPI.registerCoreAllInfo(out);
+				CommandInfoAPI.registerUncheckedCommandInfo(out);//msg
 			}else{
-				FileIO.writeMapToFile( convertMapping(core.get(id).getCommandInfo()), file);
-				CommandInfoAPI.registerCoreAllInfo(core.get(id));
+				FileIO.writeMapToFile( convertMapping(entry.getValue().getCommandInfo()), file);
+				CommandInfoAPI.registerUncheckedCommandInfo(entry.getValue());//msg
 			}
 		}
-		
 	}
 	
 	private static String constructFileName(String id){
