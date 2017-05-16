@@ -35,7 +35,7 @@ public class CmdInitial extends CommandBase{
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		
 		if(args.length >= 1){
-			for(CommandBase cmd : CommandInfoAPI.getCommands()){
+			for(CommandBase cmd : CommandInfoAPI.getSubCommands()){
 				if(cmd.getName().equalsIgnoreCase(args[0]) && cmd.checkPermission(server, sender)){
 					cmd.execute(server, sender, args);
 				}
@@ -50,9 +50,9 @@ public class CmdInitial extends CommandBase{
 	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args,
 			BlockPos targetPos) {
 		if(args.length == 1){
-			return getListOfStringsMatchingLastWord(args, CommandInfoAPI.getCommandMethods());
+			return getListOfStringsMatchingLastWord(args, CommandInfoAPI.getSubCommandMethods());
 		}else{
-			for(CommandBase cmd : CommandInfoAPI.getCommands()){
+			for(CommandBase cmd : CommandInfoAPI.getSubCommands()){
 				if(cmd.getName().equalsIgnoreCase(args[0])){
 					return cmd.getTabCompletions(server, sender, args, targetPos);
 				}

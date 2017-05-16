@@ -1,7 +1,7 @@
 [
 {
   "modid": "commandinfo",
-  "name": "${mod_name}",
+  "name": "CommandInfo",
   "description": "Might help the use in understanding the far to many commands out there; don't forge minecraft has /? for the usage of a command; that and there is an API for those who want to register their stuff, too :)",
   "version": "${version}",
   "mcversion": "${mcversion}",

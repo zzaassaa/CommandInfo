@@ -1,0 +1,16 @@
+[
+{
+  "modid": "commandinfo",
+  "name": "CommandInfo",
+  "description": "Might help the use in understanding the far to many commands out there; don't forge minecraft has /? for the usage of a command; that and there is an API for those who want to register their stuff, too :)",
+  "version": "1.11.2-0.0.1.1",
+  "mcversion": "1.11.2",
+  "url": "https://github.com/zzaassaa/CommandInfo",
+  "updateUrl": "",
+  "authorList": ["draganz"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

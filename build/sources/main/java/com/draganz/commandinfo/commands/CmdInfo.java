@@ -9,7 +9,8 @@ import java.util.Map.Entry;
 
 import com.draganz.commandinfo.Library;
 import com.draganz.commandinfo.api.CommandInfoAPI;
-import com.draganz.commandinfo.handler.ConfigHandler;
+import com.draganz.commandinfo.api.ICommandInfoMapping;
+import com.draganz.commandinfo.api.IStringPacket;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
@@ -18,7 +19,6 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.command.WrongUsageException;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentTranslation;
 
 public class CmdInfo extends CommandBase{
 
@@ -40,11 +40,19 @@ public class CmdInfo extends CommandBase{
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		if(args.length >= 2){
-			for(Entry<ICommand, String> out : CommandInfoAPI.getCommandInfo().entrySet()){
-				if(out.getKey().getName().equalsIgnoreCase(args[1])){
-					sender.sendMessage(new TextComponentTranslation(out.getValue(), args[1]));
+			for(ICommandInfoMapping mapping : CommandInfoAPI.getCommandInfo().values()){
+				for(Entry<ICommand, IStringPacket> out : mapping.getCommandInfo().entrySet()){
+					if(args.length >= 3){
+						if(out.getKey().getName().equalsIgnoreCase(args[2])){
+							out.getValue().doChatMessage(server, sender, args);
+							return;
+						}
+					}else{
+						throw new WrongUsageException(Library.Commands.CMD_INFO_ID_USAGE);
+					}
 				}
 			}
+			throw new WrongUsageException(Library.Commands.CMD_INFO_ARG_USAGE);
 		}else{
 			throw new WrongUsageException(Library.Commands.CMD_INFO_USAGE);
 		}
@@ -53,26 +61,21 @@ public class CmdInfo extends CommandBase{
 	@Override
 	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args,
 			BlockPos targetPos) {
-		String[] easyArgs = Arrays.copyOfRange(args, 1, args.length);
 		
-		if(args.length == 2){
-			return getListOfStringsMatchingLastWord(easyArgs, getMethods(CommandInfoAPI.getCommandInfo().keySet()));
-		}else{
-			for(ICommand cmd : CommandInfoAPI.getCommandInfo().keySet()){
-				if(cmd.getName().equalsIgnoreCase(easyArgs[0])){
-					return cmd.getTabCompletions(server, sender, easyArgs, targetPos);
-				}
-			}
+		if(args.length == 2){//set modid
+			return getListOfStringsMatchingLastWord(args, CommandInfoAPI.getCommandInfo().keySet());
+		}else if(args.length == 3){//set additional args
+			return getListOfStringsMatchingLastWord(args, getMethods(CommandInfoAPI.getCommandInfoMapping(args[1]).keySet()));
 		}
 		
 		return Collections.<String>emptyList();
 	}
 	
-	private List<String> getMethods(Collection<ICommand> blks){
+	private List<String> getMethods(Collection<ICommand> cmds){
 		final List<String> out = new ArrayList();
 		
-		for(ICommand k : blks){
-			out.add(k.getName());
+		for(ICommand cmd : cmds){
+			out.add(cmd.getName());
 		}
 		
 		return out;

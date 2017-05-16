@@ -13,7 +13,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 version = "${mod_version}"
 group = mod_group
-archivesBaseName = "${mod_name}"
+archivesBaseName = mod_name
 
 sourceCompatibility = targetCompatibility = "1.8" 
 compileJava {
@@ -24,6 +24,11 @@ minecraft {
     version = minecraft_version + "-" + forge_version
     runDir = "run"
     
+    replaceIn "CommandInfo.java"
+    
+    replace "@MOD_NAME@", mod_name
+    replace "@MOD_VERSION@", mod_version
+    
     // the mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   snapshot are built nightly.
     // stable_#            stables are built at the discretion of the MCP team.
@@ -32,8 +37,6 @@ minecraft {
     mappings = "snapshot_20161220"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
     
-    replace "@MOD_VERSION@", mod_version
-    replace "@MOD_NAME@", mod_name
 }
 
 dependencies {

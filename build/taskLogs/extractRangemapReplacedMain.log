@@ -1,0 +1,71 @@
+Symbol range map extraction starting
+Processing 21 files
+startProcessing "com/draganz/commandinfo/CommandInfo.java" md5: d8090d70b264aedccbd36ad9ad1288f2
+endProcessing "com/draganz/commandinfo/CommandInfo.java"
+
+startProcessing "com/draganz/commandinfo/Library.java" md5: bf8750b7d2e4df5218f306e51d971fa6
+endProcessing "com/draganz/commandinfo/Library.java"
+
+startProcessing "com/draganz/commandinfo/api/CommandInfoAPI.java" md5: 87f37540adb7c95d8f56852f88e6226d
+endProcessing "com/draganz/commandinfo/api/CommandInfoAPI.java"
+
+startProcessing "com/draganz/commandinfo/api/CommentComponent.java" md5: 258d29b0959965c726938db061a9c58b
+endProcessing "com/draganz/commandinfo/api/CommentComponent.java"
+
+startProcessing "com/draganz/commandinfo/api/EasyStringPacket.java" md5: 909b24fbdd6725bf8a2d7beb8827faeb
+endProcessing "com/draganz/commandinfo/api/EasyStringPacket.java"
+
+startProcessing "com/draganz/commandinfo/api/ICommandInfoMapping.java" md5: 2f050096dec4fc97fc49ec2f8c24ebec
+endProcessing "com/draganz/commandinfo/api/ICommandInfoMapping.java"
+
+startProcessing "com/draganz/commandinfo/api/IStringPacket.java" md5: 1dec34c51cad7bb8cb7115037c930248
+endProcessing "com/draganz/commandinfo/api/IStringPacket.java"
+
+startProcessing "com/draganz/commandinfo/api/SimpleCommandInfoMapping.java" md5: 974766e5f242ffe03f3b1fd661715722
+endProcessing "com/draganz/commandinfo/api/SimpleCommandInfoMapping.java"
+
+startProcessing "com/draganz/commandinfo/api/SimpleStringPacket.java" md5: c463d15ac6d75acbacd720b5234b874f
+endProcessing "com/draganz/commandinfo/api/SimpleStringPacket.java"
+
+startProcessing "com/draganz/commandinfo/api/package-info.java" md5: a600f4e2a982e3313bf65e0cc97c7b62
+endProcessing "com/draganz/commandinfo/api/package-info.java"
+
+startProcessing "com/draganz/commandinfo/client/gui/GuiFactory.java" md5: 3fffd73c4c58b799794eab767af99e00
+endProcessing "com/draganz/commandinfo/client/gui/GuiFactory.java"
+
+startProcessing "com/draganz/commandinfo/client/gui/ModGuiConfig.java" md5: 947231112512c7ea30c8e597be572af4
+endProcessing "com/draganz/commandinfo/client/gui/ModGuiConfig.java"
+
+startProcessing "com/draganz/commandinfo/commands/CmdInfo.java" md5: 79251c1601c2c9075fcf6f0c5a65e3fb
+endProcessing "com/draganz/commandinfo/commands/CmdInfo.java"
+
+startProcessing "com/draganz/commandinfo/commands/CmdInitial.java" md5: 4b979eba9b3fa0fd9185b8c3351d6b91
+endProcessing "com/draganz/commandinfo/commands/CmdInitial.java"
+
+startProcessing "com/draganz/commandinfo/handler/CompressionUtils.java" md5: 1fc0d60a32eac74a4c74c5f9f55c079b
+    Compile Error! Pb(874) Resource specification not allowed here for source level below 1.7
+    Compile Error! Pb(874) Resource specification not allowed here for source level below 1.7
+endProcessing "com/draganz/commandinfo/handler/CompressionUtils.java"
+
+startProcessing "com/draganz/commandinfo/handler/ConfigHandler.java" md5: 4db87f5ca4a6f361e709e79e9eb043e4
+endProcessing "com/draganz/commandinfo/handler/ConfigHandler.java"
+
+startProcessing "com/draganz/commandinfo/handler/InfoFileHandler.java" md5: 02c305339ec463eeaad6857c28d4fcd4
+    Compile Error! Pb(646) Method references are allowed only at source level 1.8 or above
+    Compile Error! Pb(647) Constructor references are allowed only at source level 1.8 or above
+endProcessing "com/draganz/commandinfo/handler/InfoFileHandler.java"
+
+startProcessing "com/draganz/commandinfo/initialization/InitCommands.java" md5: 4b2e23c11706bedd0f3ce681fdc493ef
+endProcessing "com/draganz/commandinfo/initialization/InitCommands.java"
+
+startProcessing "com/draganz/commandinfo/network/InfoNetwork.java" md5: 6e15a09b782e45a314395fd71c89a197
+endProcessing "com/draganz/commandinfo/network/InfoNetwork.java"
+
+startProcessing "com/draganz/commandinfo/network/MsgSyncInfo.java" md5: 23ba90c510cb85a4c1d4c95e1724a9c1
+endProcessing "com/draganz/commandinfo/network/MsgSyncInfo.java"
+
+startProcessing "com/draganz/commandinfo/streamio/FileIO.java" md5: 3754e971becac1682a90bb433819c345
+    Compile Error! Pb(874) Resource specification not allowed here for source level below 1.7
+    Compile Error! Pb(874) Resource specification not allowed here for source level below 1.7
+endProcessing "com/draganz/commandinfo/streamio/FileIO.java"
+
